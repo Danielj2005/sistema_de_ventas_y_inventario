@@ -5,19 +5,6 @@ include_once "./modelo/configuracion_model.php"; // se incluye el modelo de conf
 
 $_SESSION["intentos_sesion"] = 1;
 
-$_SESSION['numero_1'] = rand(1, 8);
-$_SESSION['numero_2'] = rand(1, 5);
-
-$_SESSION['captcha'] = $_SESSION['numero_1'] + $_SESSION['numero_2'];
-
-// se obtiene la Cantidad de Preguntas de Seguridad que tiene el sistema
-$CPS = intval(mysqli_fetch_array(config_model::consultar("c_preguntas"))['c_preguntas']); 
-// $CPS = intval($CPS['c_preguntas']); 
-$CPS = rand(1, $CPS);
-
-$_SESSION['ARC'] = 'ecDAuKiplp8=';
-$_SESSION['CPS'] = $CPS;
-
 ?>
 <!DOCTYPE html>
 <html lang="en" class="dark">
@@ -97,29 +84,6 @@ $_SESSION['CPS'] = $CPS;
 										onclick="show_password('eyeIcon', 'pswd')"
 									>
 										<i class="bi bi-eye" id="eyeIcon"></i> </button>
-								</div>
-							</div>
-
-							<div class="col-12 mb-4">
-								<div style="max-width: 300px;" class="card bg-transparent text-white border-0 mx-auto">
-									<div class="card-body p-0">
-										<label for="respuesta_captcha" class="form-label text-center d-block fw-bold mb-2">
-											¿Cuánto es <?= $_SESSION['numero_1'] ?> + <?= $_SESSION['numero_2'] ?>?
-										</label>
-										
-										<input 
-											placeholder="Ingresa la respuesta aquí" 
-											type="number" 
-											id="respuesta_captcha" 
-											name="respuesta_captcha" 
-											autocomplete="off" 
-											min="1" 
-											max="20" 
-											pattern="[0-9]*" 
-											required 
-											class="form-control border-2 text-center rounded-3 shadow-sm"
-										>
-									</div>
 								</div>
 							</div>
 

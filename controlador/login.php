@@ -72,30 +72,6 @@ if (!password_verify($contraseña, $hash)) {
     exit();
 }
 
-/** verificación del captcha enviado por el usuario */
-
-$captcha = intval($_SESSION['captcha']); // captcha recibido desde la vista de inicio de sesión
-$respuesta_captcha = intval($_POST['respuesta_captcha']); // captcha enviado por el usuario
-
-// se verifica que se esté recibiendo la respuesta del captcha
-if (empty($_POST['respuesta_captcha']) || !isset($_POST['respuesta_captcha'])) { 
-    alert_model::alerta_simple(
-        '¡Ocurrio un Error!',
-        'El campo de captcha se encuentra vacio, verifique e intente nuevamente',
-        'error'
-    );
-    exit();
-} 
-
-// se verifica que el captcha recibido sea igual al mostrado al usuario
-if ($respuesta_captcha !== $captcha) {
-    alert_model::alerta_condicional(
-        '¡El captcha es invalido!',
-        'Verifique e intente nuevamente, en caso de que el captcha sea correcto recargar la página.',
-        'error'
-    );
-    exit();
-}
 
 /** se verifica si el usuario esta activo **/
 if ($datos_usuario["estado"] == 0) {
@@ -163,11 +139,6 @@ $_SESSION['dataUsuario'] = [
     "id_rol" => $datos_usuario["id_rol"],
     "nombreRolUsuario" => $datos_usuario["rol_usuario"]
 ];
-
-$_SESSION['id_usuario'] = $datos_usuario["id_usuario"]; // variable con el id_usuario del usuario
-$_SESSION['primer_inicio'] = $datos_usuario["primer_inicio"]; 
-$_SESSION['id_rol'] = $datos_usuario["id_rol"]; // variable con el id de el rol del usuario
-$_SESSION['nombreRolUsuario'] = $datos_usuario['rol_usuario'];
 
 // asignacion de roles a variables de session
 $_SESSION['permisosRol'] = rol_model::obtenerPermisosRol(); // variable con todos los permisos del usuario a los modulos
