@@ -35,32 +35,32 @@ $detalles_menu = modeloPrincipal::consultar("SELECT P.id_producto, P.nombre_prod
 $id_select = modeloPrincipal::encryptionId($id_menu);
 ?>
 <form id="modalSendForm" action="../controlador/servicio_controlador.php" method="post" class="SendFormAjax" autocomplete="off" data-type-form="update">
-    <div class="card-body p-2">
+    <div class="card-body">
         <input type="hidden" name="dolar" id="precioDolar" value="<?= $precio_dolar_actual; ?>">
         <input type="hidden" name="modulo" value="Modificar">    
         <input type="hidden" value="<?= modeloPrincipal::encryptionId($id_menu) ?>" name="UIS">
     
         <div class="col-12 col-sm-12 col-md-12 mb-3">
-            <h5 class="card-title"> Datos del Servicio </h5>
+            <h5 class="card-title dark:text-slate-500 dark:border-b-slate-300"> Datos del Servicio </h5>
             <div class="row">
                 <div class="col-md-6 col-12 mb-3">
-                    <label class="form-label">Nombre del Servicio</label>
+                    <label class="form-label dark:text-slate-500">Nombre del Servicio</label>
                     <div class="col-md-4 input-group">
                     <input type="text" class="form-control" value="<?= $servicios['nombre_platillo'] ?>" placeholder="ingresa el nombre del servicio" name="nombre_platillo" id="nombre_platillo" required>
                     </div>
                 </div>
                 <div class="col-md-6 col-12 mb-3">
-                    <label class="form-label">Descripción</label>
+                    <label class="form-label dark:text-slate-500">Descripción</label>
                     <input type="text" class="form-control" value="<?= $servicios['descripcion'] ?>" placeholder="ingresa la descripción" id="descripcion" name="descripcion" required>
                 </div>
                 <div class="col-md-6 col-12 mb-3">
-                    <label class="form-label">Precio de venta en $</label>
+                    <label class="form-label dark:text-slate-500">Precio de venta en $</label>
                     <div class="col-md-4 input-group">
                     <input type="text" class="form-control" value="<?= $servicios['precio_dolar'] ?>" placeholder="ingresa el precio de venta en $" name="precio_dolar" id="precio_dolar" required>
                     </div>
                 </div>
                 <div class="col-md-6 col-12 mb-3">
-                    <label class="form-label">Estado</label>
+                    <label class="form-label dark:text-slate-500">Estado</label>
                     
                     <select class="form-select" name="estado_menu" id="id_estado">
     
@@ -72,13 +72,13 @@ $id_select = modeloPrincipal::encryptionId($id_menu);
         </div>
         
         <div class="table-responsive">
-            <h5 class="card-title">Productos del servicio</h5>
+            <h5 class="card-title dark:text-slate-500 dark:border-b-slate-300">Productos del servicio</h5>
 
             <div class="col-12 mb-3 text-center d-none">
                 <button type="button" onclick="addProductOnService()" class="btn btn-primary bi bi-plus">&nbsp;Agregar otro Producto</button>
             </div>
 
-            <table class="table table-striped tableModifyService">
+            <table class="dark:bg-[#fff] table table-striped tableModifyService">
                 <thead>
                     <tr>
                         <th class="col text-center" scope="col">Nº</th>
@@ -106,8 +106,9 @@ $id_select = modeloPrincipal::encryptionId($id_menu);
                             INNER JOIN marca AS M ON M.id = P.id_marca
                             ORDER BY P.nombre_producto ASC");
 
-                    ?>    
-                        <tr>
+                    ?>  
+           
+            <tr class="hover:bg-slate-300 border-b-slate-600">   
                             <td class="col"> </td>
                             <td class="col text-start">
                                 <select name="producto[]" class="form-select select2" id="select_productos_<?= modeloPrincipal::encryptionId($id_menu) ?>" required>

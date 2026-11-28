@@ -7,8 +7,8 @@ require_once "../../../modelo/rol_model.php";
 
 ?>
 <div class="table table-responsive">
-    <table class="table table-striped mb-3 tableCategoryOfProducts" id="tableCategoryOfProducts">
-        <thead>
+    <table class="table mb-3 dark:bg-[#fff] tableCategoryOfProducts" id="tableCategoryOfProducts">
+        <thead class=" ">
             <tr>
                 <th class="col text-center" scope="col">#</th>
                 <th class="col text-center" scope="col">Nombre</th>

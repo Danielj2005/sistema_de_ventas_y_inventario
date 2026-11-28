@@ -51,7 +51,7 @@ if ($permiso_productos) {  ?>
                 include_once "../include/css_include.php";
             ?>
         </head>
-        <body>
+        <body class="dark:bg-gray-900 bg-gray-400/20 ">
             <?php
                 // se incluye el header / encabezado a la vista
                 include_once "../include/header.php";
@@ -64,7 +64,7 @@ if ($permiso_productos) {  ?>
                         <i class="bi bi-chevron-left"></i> 
                         <span>Volver al Panel Principal</span>
                     </a>
-                    <h1 class="text-center titulosH my-2">Gestión de Productos</h1>
+                    <h1 class="text-center titulosH my-2 dark:text-slate-500">Gestión de Productos</h1>
                 </div>
                 <section class="section dashboard">
                     <div class="row m-0"> 
@@ -77,43 +77,47 @@ if ($permiso_productos) {  ?>
 
                                 <?php if ($categoria): ?>
 
-                                    <div class="text-center col-12 col-md-3 fs-4 border card">
-                                        <h3 class="text-center mt-2 titulosH fs-3">Categorías</h3>
+                                    <div class="text-center col-12 col-md-3 fs-4 card bg-[#fff] dark:bg-slate-800 rounded-2xl shadow-xl shadow-black/5 ">
+                                        <h3 class="text-center mt-2 titulosH text-md dark:text-slate-500 mb-4">Categorías</h3>
+                                        <div class="flex flex-wrap gap-6 justify-center">
 
                                         <?php if ($r_categoria == 1): ?>
 
-                                            <div class="text-center mb-2">
+                                            <div class="text-center">
                                                 <button 
                                                     modal="registrarCategoria" 
                                                     type="button" 
                                                     data-bs-toggle="modal" 
                                                     data-bs-target="#modal" 
-                                                    class="mb-2 btn_modal btn btn-success"><i class="bi bi-plus-circle"></i> Registrar Nueva
+                                                    class="rounded-2xl btn_modal btn btn-success">
+                                                    <i class="bi bi-plus"></i> Añadir
                                                 </button>
                                             </div>
 
                                         <?php endif; if ($l_categoria == 1 ): ?>
 
-                                            <div class="text-center mb-2">
+                                            <div class="text-center">
                                                 <button 
                                                     modal="listaCategoria" 
                                                     id="btn_ver_listas_categoria" 
                                                     type="button" 
-                                                    class="btn_modal btn btn btn-secondary" 
+                                                    class="rounded-2xl btn_modal btn btn btn-secondary" 
                                                     data-bs-toggle="modal" 
-                                                    data-bs-target="#modal"><i class="bi bi-list-columns-reverse"></i> Lista de Categorías
+                                                    data-bs-target="#modal">
+                                                    <i class="bi bi-list-task"></i> Lista
                                                 </button>
                                             </div>
 
                                         <?php endif; ?>
+                                        </div>   
                                     </div>   
 
                                 <?php endif; if ($presentacion): ?>
 
-                                    <div id="" class="text-center col-12 col-md-4 fs-4 border card">
-                                        <h3 class=" text-center mt-2 titulosH fs-3">Presentaciones</h3>
+                                    <div id="" class="text-center col-12 col-md-4 fs-4  card bg-[#fff] dark:bg-slate-800 rounded-2xl shadow-xl shadow-black/5 ">
+                                        <h3 class=" text-center mt-2 titulosH text-md dark:text-slate-500 mb-4">Presentaciones</h3>
 
-                                        <div class="justify-content-center text-center mb-2">
+                                        <div class="flex flex-wrap gap-6 justify-center">
                                             <?php if ($r_presentacion == 1): ?>
 
                                                 <div class="text-center mb-2">
@@ -122,7 +126,7 @@ if ($permiso_productos) {  ?>
                                                         data-bs-toggle="modal" 
                                                         data-bs-target="#modal" 
                                                         type="button" 
-                                                        class="mb-2 btn_modal btn btn-success"> <i class="bi bi-plus-circle"></i> Registrar Nueva
+                                                        class="rounded-2xl mb-2 btn_modal btn btn-success"> <i class="bi bi-plus"></i> Añadir
                                                     </button>
                                                 </div>
 
@@ -133,22 +137,22 @@ if ($permiso_productos) {  ?>
                                                         modal="listaPresentacion" 
                                                         id="btn_ver_listas_presentacion" 
                                                         type="button" 
-                                                        class="btn_modal btn btn btn-secondary" 
+                                                        class="rounded-2xl btn_modal btn btn btn-secondary" 
                                                         data-bs-toggle="modal" 
-                                                        data-bs-target="#modal"> <i class="bi bi-list-task"></i> Lista de Presentaciones
+                                                        data-bs-target="#modal"> <i class="bi bi-list-task"></i> Lista
                                                     </button>
                                                 </div>
 
                                             <?php endif; ?>
-                                        </div>
+                                        </div>  
                                     </div>   
 
                                 <?php endif; if ($r_marca || $l_marca ): ?>
 
-                                    <div id="" class="text-center col-12 col-md-3 fs-4 card border">
-                                        <h3 class="text-center mt-2 titulosH fs-3">Marcas</h3>
+                                    <div id="" class="text-center col-12 col-md-3 fs-4 card bg-[#fff] dark:bg-slate-800 rounded-2xl shadow-xl shadow-black/5 ">
+                                        <h3 class="text-center mt-2 titulosH text-md dark:text-slate-500 mb-4">Marcas</h3>
                                         
-                                        <div class="justify-content-around text-center mb-2">
+                                        <div class="flex flex-wrap gap-6 justify-center">
                                             <?php if ($r_marca == 1): ?>
 
 
@@ -158,7 +162,7 @@ if ($permiso_productos) {  ?>
                                                         type="button" 
                                                         data-bs-toggle="modal" 
                                                         data-bs-target="#modal" 
-                                                        class="mb-2 btn_modal btn btn-success"> <i class="bi bi-plus-circle"></i> Registrar Nueva
+                                                        class="rounded-2xl mb-2 btn_modal btn btn-success"> <i class="bi bi-plus"></i> Añadir
                                                     </button>
                                                 </div>
 
@@ -169,9 +173,9 @@ if ($permiso_productos) {  ?>
                                                         modal="listaMarca" 
                                                         id="btn_ver_listas_marca" 
                                                         type="button" 
-                                                        class="btn_modal btn btn btn-secondary" 
+                                                        class="rounded-2xl btn_modal btn btn btn-secondary" 
                                                         data-bs-toggle="modal" 
-                                                        data-bs-target="#modal"> <i class="bi bi-list-columns-reverse"></i> Lista de Marcas
+                                                        data-bs-target="#modal"> <i class="bi bi-list-task"></i> Lista
                                                     </button>
                                                 </div>
 
@@ -186,19 +190,20 @@ if ($permiso_productos) {  ?>
                         <!-- registro y listado de productos -->
 
                         <div class="col-12 mb-3 pagetitle text-center">
-                            <div class="card">
+                            <div class="card bg-[#fff] dark:bg-slate-800 rounded-2xl shadow-xl shadow-black/5 ">
                                 <div class="card-body row p-3">
                                     
                                     <?php if ($r_productos && $l_productos): ?>
 
                                         <div class="setCol col-md-6 text-center col-md-4 col-12 mb-3">
-                                            <button id="btn-toggle" onclick="toggle()" type="button" class="col-12 btn btn-success"><i class="bi bi-plus-circle"></i> Registrar Productos </button>
+                                            <button id="btn-toggle" onclick="toggle()" type="button" class="rounded-2xl col-12 btn btn-success">
+                                                <i class="bi bi-plus-circle"></i> Registrar Productos </button>
                                         </div>
 
                                     <?php endif;  if ($r_productos == 1 ): ?>
                                         
                                             <div class="tableRegisterProducts text-center col-12 col-md-4 mb-3 <?= $l_productos == 0 ? 'col-md-6' : 'd-none'?> ">
-                                                <button type="button" id="btn_add_card_product" class="col-12 btn btn-success bi bi-plus-circle">&nbsp;Agregar a la Lista de Producto</button>
+                                                <button type="button" id="btn_add_card_product" class="rounded-2xl col-12 btn btn-success bi bi-plus-circle">&nbsp;Agregar a la Lista de Producto</button>
                                             </div>
 
                                     <?php endif; ?>
@@ -246,21 +251,20 @@ if ($permiso_productos) {  ?>
 
                                     <hr>
                                     
-                                    <h3 id="titleModuleProducts" class="my-3 col-12 fs-3 titulosH"><?= $l_productos == 1 ? 'Inventario de Productos' : 'Registro de Productos'?></h3>
+                                    <h3 id="titleModuleProducts" class="my-2 col-12 fs-3 titulosH  dark:text-slate-500"><?= $l_productos == 1 ? 'Inventario de Productos' : 'Registro de Productos'?></h3>
                                     <div class="my-3 col-12 text-start">
-                                        <p class="text-secondary fs-6 fw-bold mb-1 card-title">Productos de color: </p>
-                                        <small class="d-block text-muted">
-                                            <span class="fs-6 badge fw-bold text-bg-primary">Gran cantidad de stock (20 o más)</span>
-                                            <span class="fs-6 badge fw-bold text-bg-warning">Poca cantidad de stock (18 o menos)</span> 
-                                            <span class="fs-6 badge fw-bold text-bg-danger">Baja cantidad de stock (9 o menos)</span>
+                                        <p class="text-secondary fs-6 fw-bold mb-1 card-title dark:border-b-slate-400">Productos de color: </p>
+                                        <small class="flex flex-wrap gap-3 justify-center p-3 ">
+                                            <span class=" dark:border-blue-500 dark:bg-[#0000] dark:border text-[0.9rem] px-3 rounded-2xl fw-bold bg-blue-600 dark:text-blue-600 text-[#fff]">Gran cantidad de stock (40 o más)</span>
+                                            <span class=" dark:border-amber-500 dark:bg-[#0000] dark:border text-[0.9rem] px-3 rounded-2xl fw-bold bg-amber-500  dark:text-amber-500 text-[#fff]">Poca cantidad de stock (30 o menos)</span> 
+                                            <span class=" dark:border-red-500 dark:bg-[#0000] dark:border  text-[0.9rem] px-3 rounded-2xl fw-bold bg-red-500  dark:text-red-500 text-[#fff]">Baja cantidad de stock (20 o menos)</span>
                                         </small>
                                     </div>
                                     <?php if ($l_productos == 1 ): ?>
 
-                                        <div id="tableListProducts" class="justify-content-between align-items-center table table-responsive">
-                                            <table class="table example mb-3 table-striped" id="example">
-                                                <thead>
-                                                    <tr>
+                                        <div id="tableListProducts" class="justify-content-between align-items-center table table-responsive  dark:text-slate-500">
+                                            <table class="table example mb-3" id="example">
+        <thead class=" dark:bg-[#fff] ">                                                    <tr>
                                                         <th class="col text-center" scope="col">N.º</th>
                                                         <th class="col text-center" scope="col">Producto</th>
                                                         <th class="col text-center" scope="col">Stock</th>
@@ -269,7 +273,7 @@ if ($permiso_productos) {  ?>
                                                         <th class="col text-center" scope="col">Editar</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
+        <tbody class=" dark:bg-[#fff] ">
                                                     <?php producto_model::lista(); ?>  
                                                 </tbody>
                                             </table>

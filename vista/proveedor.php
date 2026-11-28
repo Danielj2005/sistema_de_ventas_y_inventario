@@ -34,7 +34,7 @@ if ($proveedores) {  ?>
         include_once "../include/css_include.php";
       ?>
     </head>
-    <body>
+    <body class="dark:bg-gray-900 bg-gray-400/20 ">
       <?php 
         // se incluye el header / encabezado a la vista
         include_once "../include/header.php";
@@ -49,24 +49,26 @@ if ($proveedores) {  ?>
               <i class="bi bi-chevron-left"></i> 
               <span>Volver al Panel Principal</span>
             </a>
-            <h1 class="mt-3">Gestión de Proveedores</h1>
+            <h1 class="mt-3 dark:text-gray-100">Gestión de Proveedores</h1>
           </div>
         </div>
 
         <section class="section dashboard">
           <div class="row">
             <div class="col-12">
-              <div class="card top-selling">
+              <div class="card top-selling bg-[#fff] dark:bg-slate-800 rounded-2xl shadow-xl shadow-black/5 ">
                 <div class="row p-2 text-center">
 
                   <?php if ($r_proveedores == 1 && $l_proveedores == 1 ): ?>
-                    <div id="btn_register_container" class="col-12 col-sm-12 mb-3 row m-0 col-md-6">
-                      <button id="btn-toggle" onclick="toggle()" class="btn btn-success"><i class="bi bi-plus-circle"></i> Nuevo Proveedor </button>
+                    <div id="btn_register_container" class="col-12 mb-3 row m-0 col-md-6">
+                      <button modal="proveedorRegistrar" id="btn-toggle" class="rounded-2xl btn_modal btn btn-success" data-bs-toggle="modal" data-bs-target="#modal" >
+                        <i class="bi bi-plus text-lg"></i> Añadir Proveedor
+                      </button>
                     </div>
                   <?php endif; ?>
 
                   <div class="col-12 col-sm-12 mb-3 row m-0 <?= $r_proveedores == 1 && $l_proveedores == 0 ? 'col-md-12' : 'col-md-6'; ?>">
-                    <a class="col-12 btn btn-secondary" 
+                    <a class="rounded-2xl col-12 btn btn-secondary" 
                       target="_blank" 
                       href="./reportes/lista_proveedores.php">
                         <i class="bi bi-file-earmark-arrow-down"></i>
@@ -82,8 +84,8 @@ if ($proveedores) {  ?>
                   <?php if ($l_proveedores == '1'): ?>
 
                     <div id="tableListSupliers" class=" table table-responsive">
-                      <h5 class="card-title">Listado de Proveedores Registrados</h5>
-                      <table class="table table-borderless table-striped example" id="example">
+                      <h5 class="card-title dark:border-slate-400 border-b border-md font-medium text-gray-800 dark:text-slate-400">Lista de Proveedores</h5>
+                      <table class="table example" id="example">
                         <thead>
                           <tr>
                             <th class="col text-center" scope="col">#</th>
@@ -98,7 +100,9 @@ if ($proveedores) {  ?>
                             <?php endif; ?>
                           </tr>
                         </thead>
-                        <tbody> <?php proveedor_model::lista_proveedores_registrados(); ?> </tbody>
+                        <tbody class=" dark:bg-[#fff] "> 
+                          <?php proveedor_model::lista_proveedores_registrados(); ?> 
+                        </tbody>
                       </table>
                     </div>
 

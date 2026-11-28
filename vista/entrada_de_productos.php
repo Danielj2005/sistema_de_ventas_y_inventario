@@ -30,7 +30,7 @@ if ($entrada) {   ?>
 			include_once "../include/css_include.php"; 
 		?>
     </head>
-    <body>
+    <body class="dark:bg-gray-900 bg-gray-400/20 ">
 
 		<?php 
 			// se incluye el header / encabezado a la vista
@@ -58,30 +58,33 @@ if ($entrada) {   ?>
 					<?php if ($l_entrada == 1) { ?>
 						<!-- Se define y se decide condicionalmente el titulo de la vista -->
 							
-						<h1 class="tituloUno my-3">Historial de Compras</h1>
+						<h1 class="tituloUno my-3 dark:text-gray-100">Historial de Compras</h1>
 
 					<?php }else if ($r_entrada == 1) { ?>
 
-						<h1 class="tituloUno my-3">Registro de Compras</h1>
+						<h1 class="tituloUno my-3 dark:text-gray-100">Registro de Compras</h1>
 
 					<?php } ?>
 
-					<div id="cardEntries" class="col-12 col-sm-12 col-md-6 pagetitle text-center card-body">
-						<div class="accordion" id="entriesAccordion">
-							<div class="accordion-item text-center justify-content-center align-items-center row">
-								<h3 class="accordion-header my-3 col fs-4 text-center">
-									<button class="accordion-button collapsed titulosH bg-info-light" type="button" data-bs-toggle="collapse" data-bs-target="#entriesCard" aria-expanded="true" aria-controls="collapseOne">¿Qué es una Entrada de productos?&nbsp;<i class="mx-2 fs-5 bi bi-exclamation-circle-fill"></i></button>
-								</h3>
-
-								<div id="entriesCard" aria-expanded="true" aria-controls="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-									<div class="accordion-body row justify-content-center p-0">
-										<p class="text-wrap-balance">
-											Las entradas de productos al inventario se originan por compras a proveedores o por adquisiciones (compras) realizadas directamente por el personal (por cuenta propia) para cubrir necesidades operacionales urgentes y asegurar la continuidad del servicio al cliente.
-										</p>
-									</div>
+					<div id="cardEntries" class="col-12 text-center">
+						<details class="group/dropdown">
+							<summary class="bg-[#fff] dark:bg-slate-800 rounded-2xl shadow-xl shadow-black/5 flex items-center justify-between px-3 py-2.5 rounded-xl text-gray-700 hover:bg-gray-100 dark:text-slate-300 dark:hover:bg-slate-800/60 transition-all cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+								<div class="flex items-center gap-3">
+									¿Qué es una Entrada de productos?&nbsp;
+									<i class="mx-2 fs-5 bi bi-exclamation-circle-fill"></i>
 								</div>
-							</div>
-						</div>
+								<i class="bi bi-chevron-down text-xs text-gray-400 transition-transform duration-200 group-open/dropdown:rotate-180"></i>
+							</summary>
+							<ul class="mt-1 space-y-1 pl-3 pr-2 bg-[#fff] dark:bg-slate-800 rounded-2xl shadow-xl shadow-black/5 ">
+								<li>
+									<a class="flex items-center gap-2 px-3 py-2 rounded-lg text-md font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-slate-800 transition-all" href="./gestion_productos.php">
+										<p class="text-wrap-balance">
+											Las entradas de productos al inventario se originan por compras a proveedores o por adquisiciones (<span class="fw-bold">compras</span> realizadas directamente por el personal (<span class="fw-bold">por cuenta propia</span>) para cubrir necesidades operacionales urgentes y asegurar la continuidad del servicio al cliente.
+										</p>
+									</a>
+								</li>
+							</ul>
+						</details>
 					</div>
 				</div>
 			</div>
@@ -89,45 +92,44 @@ if ($entrada) {   ?>
 			<section class="section dashboard">
 				<div class="row">
 					<div class="col-lg-12">
-						<div class="card top-selling ">
+						<div class="card top-selling bg-[#fff] dark:bg-slate-800 rounded-2xl shadow-xl shadow-black/5 ">
 							<div class="row text-center p-2 align-items-center">
 
 								<?php if ($r_entrada == 1 && $l_entrada == 1 ): ?>
 
 									<div class="col-12 col-sm-12 col-md-6 mb-2">
-										<button id="btn-toggle" onclick="toggle()" class="col-12 btnHiddenElements btn btn-success"><i class="bi bi-plus-circle"></i> Registrar Entrada </button>
+										<button id="btn-toggle" onclick="toggle()" class="rounded-2xl col-12 btnHiddenElements btn btn-success"><i class="bi bi-plus-circle"></i> Registrar Entrada </button>
 									</div>
 
 								<?php endif; ?>
 								
 								<div class="col-12 col-sm-12 mb-2 <?= $r_entrada == 0 && $l_entrada == 1 ? 'col-md-12 ' : 'col-md-6' ?>">
 									<div class="col-12 dropdown">
-										<button class="col-12 btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+										<button class="rounded-2xl col-12 btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 											<i class="bi bi-file-text"></i>
 											<span>Exportar Entradas</span>
 										</button>
 
-										<ul class="dropdown-menu">
-											<li> <hr class="dropdown-divider"> </li>
+										<ul class="dropdown-menu bg-[#fff] dark:bg-slate-800 rounded-2xl shadow-xl shadow-black/5 border border-gray-100 dark:border-slate-700/60 ">
 											<li class="p-2 text-center">
 												<a class="btn btn-outline-success" target="_blank" href="./reportes/lista_entradas.php">
 													<i class="bi bi-file-text"></i> 
-													<span>Exportar Entradas</span>
+													<span>Exportar todas las Entradas</span>
 												</a>
 											</li>
-											<li> <hr class="dropdown-divider"> </li>
-											<li> <hr class="dropdown-divider"> </li>
+											<li> <hr class="dropdown-divider dark:border-t-slate-300"> </li>
 											<li class="p-2 text-center">
-												<label class="dropdown-item">Exportar Por Fecha</label>
-												<form action="./reportes/lista_de_entradas_por_fechas.php" method="post" class="p-2 row mb-3" id="" target="_blank">
+                                        <label class="text-gray-800 dark:text-slate-400 my-3">Exportar Lista de las compras por Fecha</label>
+												<form action="./reportes/lista_de_entradas_por_fechas.php" method="post" class="p-2" id="" target="_blank">
 													
-													<div class="input-group mb-3 justify-content-center">
-														<label class="input-group-text text-start control-label">Fecha de inicio &nbsp;<span class="text-danger">*</span></label>
+													<div class="flex flex-col mb-3">
+														<label class="control-label dark:text-slate-300">Fecha de Inicio <span class="text-danger">*</span></label>
+
 														<input class="reportDates form-control" type="date" id="fechaReporteInicio" name="fechaReporteInicio">
 													</div>
 													
-													<div class="input-group mb-3 justify-content-center">
-														<label class="input-group-text text-start control-label">Fecha de fin &nbsp;<span class="text-danger">*</span></label>
+													<div class="flex flex-col mb-3">
+														<label class="control-label dark:text-slate-300">Fecha de fin &nbsp;<span class="text-danger">*</span></label>
 														<input class="reportDates form-control" value="<?= date('Y-m-d') ?>" type="date" id="fechaReporteFin" name="fechaReporteFin">
 													</div>
 													
@@ -163,7 +165,7 @@ if ($entrada) {   ?>
 
 										<form method="post" class="show row m-0 p-0" id="rango_fechas">
 											
-											<h5 class="card-title">Historial de Compras</h5>
+											<h5 class="card-title dark:border-b-slate-300 dark:text-slate-400">Historial de Compras</h5>
 											<div class="col-12 col-sm-12 col-md-12 mb-1">
 												<p class="alert alert-info" style="width: fit-content;">
 													Selecciona el rango de fechas para consultar el historial de entradas.
@@ -171,15 +173,17 @@ if ($entrada) {   ?>
 											</div>
 
 											<div class="col-12 col-sm-12 col-md-5 mb-2">
-												<div class="input-group justify-content-center">
-													<span class="input-group-text">Fecha de inicio</span>
+												 <div class="flex flex-col">
+                                                    <label class="control-label dark:text-slate-300">Fecha de Inicio <span class="text-danger">*</span></label>
+                                                    
 													<input class="form-control" onchange="dateValidate()" type="date" id="fecha_inicio" name="fecha_inicio">
 												</div>
 											</div>
 
 											<div class="col-12 col-sm-12 col-md-4 mb-2">
-												<div class="input-group justify-content-center">
-													<span class="input-group-text">Fecha de fin</span>
+												 <div class="flex flex-col">
+                                                    <label class="control-label dark:text-slate-300">Fecha de fin <span class="text-danger">*</span></label>
+                                                    
 													<input class="form-control" onchange="dateValidate()" value="<?= date('Y-m-d') ?>" type="date" id="fecha_fin" name="fecha_fin">
 												</div>
 											</div>
@@ -217,12 +221,12 @@ if ($entrada) {   ?>
 										<?php if ($l_entrada == 1 ): ?>
 
 											<div class="table-responsive">
-												<table class="table table-striped example" id="example">
+												<table class="table example" id="example">
 													<thead>
 														<tr>
 															<th class="col text-center" scope="col">N.º</th>
 															<th class="col text-center" scope="col"><?= $tipoCompra == 1 ? "Usuario" : "Proveedor" ?></th>
-															<th class="col text-center" scope="col">Fecha y Hora</th>
+															<th class="col text-center" scope="col">Última entrada</th>
 															<th class="col text-center" scope="col">Total </th>
 															<th class="col text-center" scope="col">Tasa de Cambio</th>
 															<th class="col text-center" scope="col">Ver Detalles</th>
@@ -230,7 +234,7 @@ if ($entrada) {   ?>
 														</tr>
 													</thead>
 
-													<tbody>
+        											<tbody class=" dark:bg-[#fff] ">
 
 														<?php
 															if ($tipoCompra == 1){
@@ -270,15 +274,15 @@ if ($entrada) {   ?>
 
 															// se guardan los datos en un array y se imprime
 															while ( $mostrar = mysqli_fetch_array($consulta)) { ?>    
-																<tr>
+																<tr class="hover:bg-slate-300 border-b-slate-600">
 																	<td class="col text-center"></td>
 																	<td class="col text-center">
-																		<small class="d-block text-muted">
+																		<small class="d-block">
 																			<span class="fw-bold">Cédula o RIF:</span> 
 																			<?= $tipoCompra == 1 ? $mostrar["cedula"] : $mostrar["cedula_rif"] ?>
 																		</small>
 
-																		<small class="d-block text-muted">
+																		<small class="d-block">
 																			<span class="fw-bold">
 																				<?= $tipoCompra == 1 ? "Usuario:" : "Proveedor:" ?>
 																			</span> 
@@ -287,24 +291,24 @@ if ($entrada) {   ?>
 																	</td>
 																	
 																	<td class="col text-center">
-																		<small class="d-block text-muted">
+																		<small class="d-block">
 																			<span class="fw-bold">Fecha:</span> <?= date("d-m-Y", strtotime($mostrar["fecha_entrada"])); ?>
 																		</small>
-																		<small class="d-block text-muted">
+																		<small class="d-block">
 																			<span class="fw-bold">Hora:</span> <?= date("h:i:a", strtotime($mostrar["fecha_entrada"])); ?>
 																		</small>
 																	</td>
 
 																	<td class="col text-center">
 																
-																		<div class="text-center justify-content-center">
-																			<p class="col-12">
-																				<span class="badge text-bg-secondary fs-6">
+																		<div class="text-center justify-center flex flex-wrap gap-2">
+																			<p class="">
+																				<span class="badge text-bg-primary fs-6 rounded-2xl">
 																					<?= modeloPrincipal::number_format_prices($mostrar["total_dolar"]); ?> $
 																				</span>
 																			</p>
-																			<p class="col-12">
-																				<span class="badge text-bg-secondary fs-6">
+																			<p class="">
+																				<span class="badge text-bg-secondary fs-6 rounded-2xl">
 																					<?= modeloPrincipal::number_format_prices($mostrar["total_bs"]); ?> Bs
 																				</span>
 																			</p>
@@ -313,7 +317,7 @@ if ($entrada) {   ?>
 																	</td>
 
 																	<td class="col text-center">
-																		<span class="badge text-bg-secondary fs-6">
+																		<span class="badge text-bg-success fs-6 rounded-2xl">
 																			<?= modeloPrincipal::number_format_prices($mostrar["tasa"]).' Bs.'; ?>
 																		</span>
 																	</td>
@@ -356,7 +360,7 @@ if ($entrada) {   ?>
 											<input type="hidden" name="id_dolar" id="dolar" value="<?= modeloPrincipal::obtener_id_precio_dolar(); ?>">
 											<input type="hidden" name="modulo" value="Guardar">
 
-											<label class="form-label">Tipo de Compra <span style="color:#f00;">*</span></label>
+											<label class="form-label dark:text-slate-300">Tipo de Compra <span style="color:#f00;">*</span></label>
 											<div class="col-12 col-md-12 mb-3">
 												<select onchange="dataBuyEntries()" name="tipo_compra" id="tipo_compra_id" class="form-select ">
 													<option selected disabled>Seleccione una opción</option>
@@ -366,10 +370,10 @@ if ($entrada) {   ?>
 											</div>
 											
 											<fieldset id="datProvider" class="row m-0 p-0 d-none">
-												<h5 class="card-title">Información del Proveedor</h5> 
+												<h5 class="card-title dark:text-slate-300">Información del Proveedor</h5> 
 												<!-- datos del proveedor al que se le compró -->
 												<div class="col-12 col-sm-6 col-md-6 mb-3">
-													<label class="form-label">Cédula o RIF <span style="color:#f00;">*</span></label>
+													<label class="form-label dark:text-slate-300">Cédula o RIF <span style="color:#f00;">*</span></label>
 													<div class="col-md-4 input-group">
 														<select class="input-group-text" id="nacionalidad" name="nacionalidad">
 															<option value="V-">V</option>
@@ -382,22 +386,22 @@ if ($entrada) {   ?>
 												</div>
 
 												<div class="col-12 col-sm-6 col-md-6 mb-3">
-													<label for="validationDefault02" class="form-label">Nombre <span style="color:#f00;">*</span></label>
+													<label for="validationDefault02" class="form-label dark:text-slate-300">Nombre <span style="color:#f00;">*</span></label>
 													<input type="text" class="form-control" minlength="3" maxlength="80" placeholder="ingresa el nombre" id="nombre_proveedor" name="nombre_proveedor">
 												</div>
 
 												<div class="col-12 col-sm-6 col-md-6 mb-3">
-													<label for="validationDefault02" class="form-label">Correo <span style="color:#f00;">*</span></label>
+													<label for="validationDefault02" class="form-label dark:text-slate-300">Correo <span style="color:#f00;">*</span></label>
 													<input type="text" class="form-control"  minlength="10" maxlength="150" placeholder ="ingresa el correo" id="correo" name="correo">
 												</div>
 
 												<div class="col-12 col-sm-6 col-md-6 mb-3">
-													<label   class="form-label">Teléfono <span style="color:#f00;">*</span></label>
+													<label   class="form-label dark:text-slate-300">Teléfono <span style="color:#f00;">*</span></label>
 													<input type="text" class="form-control" minlength="11" maxlength="11"  name="telefono" placeholder="ingresa el teléfono" id="telefono">
 												</div>
 
 												<div class="col-12 col-sm-12 col-md-12 mb-3">
-													<label for="validationDefault03" class="form-label">Dirección <span style="color:#f00;">*</span></label>
+													<label for="validationDefault03" class="form-label dark:text-slate-300">Dirección <span style="color:#f00;">*</span></label>
 													<input type="text" class="form-control" minlength="3" maxlength="250" name="direccion" placeholder="ingresa la dirección" id="direccion">
 												</div>
 											</fieldset>
@@ -405,9 +409,9 @@ if ($entrada) {   ?>
 											<!-- datos de el (los) producto(s) comprados al proveedor -->
 
 											<div class="col-12 row align-items-center mb-1 row m-0">
-												<h5 class="col-12 mb-3 card-title">Productos de la Entrada</h5>
+												<h5 class="col-12 mb-3 card-title dark:text-slate-300">Productos de la Entrada</h5>
 
-												<label class="form-label">Producto <span style="color:#f00;">*</span></label>
+												<label class="form-label dark:text-slate-300">Producto <span style="color:#f00;">*</span></label>
 												<div class="col-12 col-md-9 mb-3">
 													<select name="producto" id="producto_id" class="select form-select">
 														<option selected>Seleccione un producto</option>
@@ -422,7 +426,7 @@ if ($entrada) {   ?>
 											
 											<div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mb-1 row m-0">
 												<div class="row justify-content-around">
-													<h5 class="card-title col-12 mb-2">Lista de productos</h5>
+													<h5 class="card-title col-12 mb-2 dark:text-slate-300">Lista de productos</h5>
 
 													<div class="col-12 table-responsive m-0 p-0">
 														<table class="table table-borderless table-striped" id="">
@@ -458,7 +462,7 @@ if ($entrada) {   ?>
 											</div>
 
 											<div class="col-12 my-3">
-												<h5 class="card-title col-12">Inversión Total</h5>
+												<h5 class="card-title col-12 dark:text-slate-300">Inversión Total</h5>
 												
 												<input id="total_Dolar" type="hidden" class="totalDolar" name="totalDolar">
 												<input id="total_Bolivar" type="hidden" class="totalBolivar" name="totalBolivar">
@@ -475,7 +479,7 @@ if ($entrada) {   ?>
 											
 											<div class="col-12 mb-1">
 												<div class="form-group">
-													<p class="form-p">Los campos con <span style="color:#f00;">*</span> son obligatorios</p>
+													<p class="form-p dark:text-red-300">Los campos con <span class="text-[#f00] dark:text-red-200">*</span> son obligatorios</p>
 												</div>
 											</div>
 

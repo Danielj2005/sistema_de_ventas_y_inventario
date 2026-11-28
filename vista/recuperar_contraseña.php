@@ -6,16 +6,18 @@ include_once "../include/modelos_include.php"; // se incluyen los modelos necesa
 
 $valores["usuario_bloqueado"] = 0;
 
+if (!isset($_SESSION['ARC']) || $_SESSION['ARC'] !== "ecDAuKiplp8=") {
+	header('Location: ../');
+	exit();
+}
 
 if (!isset($_POST['correo_recuperar_contraseña']) || $_POST['correo_recuperar_contraseña'] == "") {
 	header("Location: ../"); 
 	exit();
 }
 
-// se obtiene la Cantidad de Preguntas de Seguridad que tiene el sistema
-$CPS = intval(mysqli_fetch_array(config_model::consultar("c_preguntas"))['c_preguntas']); 
 // se genera un Número aleatorio entre 1 y la cantidad de Preguntas de seguridad que tiene el sistema
-$NP = intval(rand(1, modeloprincipal::limpiar_cadena($CPS)));
+$NP = intval(modeloprincipal::limpiar_cadena($_SESSION['CPS']));
 
 $correo = modeloprincipal::limpiar_cadena($_POST['correo_recuperar_contraseña']); // se obtiene el correo del usuario que desea recuperar la contraseña
 

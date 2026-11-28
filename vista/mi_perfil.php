@@ -22,7 +22,7 @@ $VISTA_PRIMER_INICIO = $_SESSION['primer_inicio'] == '0' ? '' : 'toggle-sidebar'
       include_once "../include/css_include.php"; 
     ?>    
   </head>
-  <body class="<?= $VISTA_PRIMER_INICIO; ?>">
+  <body class="dark:bg-gray-900 bg-gray-400/20 pt-4 <?= $VISTA_PRIMER_INICIO; ?>">
 
     <?php
       include_once "../include/header.php"; 
@@ -31,81 +31,84 @@ $VISTA_PRIMER_INICIO = $_SESSION['primer_inicio'] == '0' ? '' : 'toggle-sidebar'
     
     <main id="main" class="main">
       <div class="pagetitle">
-        <h1 class="display-4 fw-bold text-start mb-3"> <i class="bi bi-person-circle me-3 text-primary"></i> Mi Perfil de Usuario </h1>
+        <h1 class="display-4 fw-bold text-start mb-3 dark:text-slate-300"> <i class="bi bi-person-circle me-3 text-blue-600 dark:text-slate-300"></i> Mi Perfil de Usuario 
+        </h1>
       </div>
 
       <section class="section dashboard">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="card">
+        
+            <div class="bg-[#fff] dark:bg-slate-800 rounded-2xl shadow-xl shadow-black/5 border border-gray-100 dark:border-slate-700/60 p-3 transition-all hover:shadow-2xl ">
                   <div class="card-body pb-3">
-                    <div class="mi_informacion_container col-12 col-lg-12 my-3">
+                    <div class="mi_informacion_container w-full my-3">
 
-                      <fieldset class="row mb-3">
-                          <legend class="col-12 mb-2"><i class="bi bi-person"></i> &nbsp;Información personal</legend>
+                      <fieldset class="row gap- mb-3">
+                          <legend class="col-12 mb-3 text-lg dark:text-slate-300">
+                            <i class="bi bi-person"></i> &nbsp;Información personal
+                          </legend>
                           <div class="col-12 col-md-6 col-lg-4 mb-3">
-                            <div class="form-group">
-                                <label class="control-label">Cédula</label>
-                                <input type="text" pattern="[0-9\-]{1,30}" class="bg-secondary-subtle form-control" value="<?= $_SESSION['dataUsuario']['dni']; ?>" id="cedula" name="cedula" readOnly="true" maxlength="9">
+                            <div class="flex flex-col">
+                                <label class="control-label dark:text-slate-300">Cédula</label>
+                                <span class="text-sm text-gray-500" ><?= $_SESSION['dataUsuario']['dni']; ?></span>
                             </div>
                           </div>
                           <div class="col-12 col-md-6 col-lg-4 mb-3">
-                            <div class="form-group">
-                              <label class="control-label">Nombres</label>
-                              <input type="text" pattern="[A-Za-zÁÉÍÚÓáéíóúñÑ ]{3,30}" class="bg-secondary-subtle form-control" value="<?= $_SESSION['dataUsuario']['nombre']; ?>" id="nombres" name="nombres" readOnly="true" maxlength="30">
+                            <div class="flex flex-col">
+                              <label class="control-label dark:text-slate-300">Nombres</label>
+                              <span class="text-sm text-gray-500" ><?= $_SESSION['dataUsuario']['nombre'] ?></span>
                             </div>
                           </div>
                           <div class="col-12 col-md-6 col-lg-4 mb-3">
-                            <div class="form-group">
-                              <label class="control-label text-black">Apellidos</label>
-                                <input type="text" pattern="[A-Za-zÁÉÍÚÓáéíóúñÑ ]{3,30}" class="bg-secondary-subtle form-control" value="<?= $_SESSION['dataUsuario']['apellido']; ?>" id="apellido" name="apellido" readOnly="true" maxlength="30">
+                            <div class="flex flex-col">
+                              <label class="control-label dark:text-slate-300">Apellidos</label>
+                              <span class="text-sm text-gray-500" ><?= $_SESSION['dataUsuario']['apellido']; ?></span>
                             </div>
                           </div>
                           <div class="col-12 col-md-6 col-lg-4 mb-3">
-                            <div class="form-group">
-                              <label class="control-label">Correo</label>
-                              <input type="email" pattern="[A-Za-zÁÉÍÚÓáéíóúñÑ\@\.\0-9]{3,30}" class="bg-secondary-subtle form-control" value="<?= $_SESSION['dataUsuario']['correo']; ?>" id="email" name="email" readOnly="true" maxlength="30">
+                            <div class="flex flex-col">
+                              <label class="control-label dark:text-slate-300">Correo</label>
+                              <span class="text-sm text-gray-500" ><?= $_SESSION['dataUsuario']['correo'] ?></span>
                             </div>
                           </div>
                           <div class="col-12 col-md-6 col-lg-4 mb-3">
-                              <div class="form-group">
-                                  <label class="control-label text-black">Teléfono</label>
-                                  <input type="text" pattern="[0-9]{11}" class="bg-secondary-subtle form-control" value="<?= $_SESSION['dataUsuario']['telefono']; ?>" id="telefono" name="telefono"  readOnly="true" maxlength="11">
+                              <div class="flex flex-col">
+                                <label class="control-label dark:text-slate-300">Teléfono</label>
+                                <span class="text-sm text-gray-500" ><?= $_SESSION['dataUsuario']['telefono'] ?></span>
                               </div>
                           </div>
                           <div class="col-12 col-md-6 col-lg-4 mb-3">
-                              <div class="form-group">
-                                  <label class="control-label">Dirección</label>
-                                  <input type="text" maxlength="250" required="" placeholder="Ingrese la Dirección" value="<?= $_SESSION['dataUsuario']["direccion"]  ?>" class="bg-secondary-subtle form-control" readOnly="true" id="direccion" name="direccion">
+                              <div class="flex flex-col">
+                                  <label class="control-label dark:text-slate-300">Dirección</label>
+
+                                  <span class="text-sm text-gray-500" ><?= $_SESSION['dataUsuario']["direccion"]  ?></span>
                               </div>
                           </div>
                           
                           <div class="col-12 mb-3 text-center d-flex justify-content-end">
-                              <button type="button" modal='modificarInfoPersonalUsuario' class="btn_modal btn btn-success text-white" data-bs-toggle="modal" data-bs-target="#modal">
+                              <button type="button" modal='modificarInfoPersonalUsuario' class="btn_modal btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">
                                 <i class='bi bi-person-circle'></i> Actualizar Información
                               </button>
                           </div>
                       </fieldset>
 
-                      <hr>
-                      <fieldset class="row mb-4">
+                      
+                      <fieldset class="row mb-4 justify-content-center align-items-center">
                         <div class="col-12 col-md-6 mb-3 justify-content-center row">
-                          <legend><i class="bi bi-person-circle"></i> &nbsp; Datos de la Cuenta</legend>
+                          <legend class=" dark:text-slate-300 text-lg">
+                            <i class="bi bi-person-circle"></i> &nbsp; Datos de la Cuenta
+                          </legend>
                           <div class="col-12 col-md-6 mb-3">
                             <div class="form-group">
-                                <label class="control-label">Nombre de Usuario</label>
-                                <input type="text" pattern="[A-Za-zÁÉÍÚÓáéíóúñÑ\@\.\0-9]{3,30}" class="bg-secondary-subtle form-control" value="<?= modeloPrincipal::ocultar_info($_SESSION['dataUsuario']['correo']); ?>" id="nombre_usuario" name="nombre_usuario" readOnly="true" maxlength="30">
+                                <label class="control-label dark:text-slate-300">Nombre de Usuario</label>
+                                <span class="text-sm text-gray-500" ><?= modeloPrincipal::ocultar_info($_SESSION['dataUsuario']['correo']); ?></span>
                             </div>
                           </div>
                           <div class="col-12 col-md-6 mb-3">
                               <div class="form-group">
-                                  <label class="control-label">Tipo de Usuario</label>
-                                  <input type="text" pattern="[A-Za-zÁÉÍÚÓáéíóúñÑ]{3,30}" class="bg-secondary-subtle form-control" value="<?= $_SESSION['nombreRolUsuario'] ?>" id="tipo_usuario" name="tipo_usuario" readOnly="true" maxlength="30">
+                                  <label class="control-label dark:text-slate-300">Tipo de Usuario</label>
+                                  <span class="text-sm text-gray-500" ><?= $_SESSION['nombreRolUsuario'] ?></span>
                               </div>
                           </div>
-                          <div class="col-12 col-md-6 mb-2 text-center d-flex justify-content-center">
+                          <div class="col-12  mb-2 text-center d-flex justify-content-center">
                               <button type="submit" modal='passwordUser' class="btn_modal btn btn-success text-white" data-bs-toggle="modal" data-bs-target="#modal">
                                 <i class='bi bi-key'></i>
                                 Actualizar Contraseña
@@ -113,8 +116,11 @@ $VISTA_PRIMER_INICIO = $_SESSION['primer_inicio'] == '0' ? '' : 'toggle-sidebar'
                           </div>
                         </div>
 
-                        <div class="col-12 col-md-6 mb-3 d-inline-block justify-content-center align-items-center">
-                            <h5 class="mb-3"><i class="bi bi-shield-fill"></i> &nbsp; Actualizar Preguntas de Seguridad</h5>
+                        <div class="col-12 col-md-6 mb-3 justify-content-center align-items-center">
+                            <h5 class="mb-3 dark:text-slate-300 text-lg">
+                              <i class="bi bi-shield-fill"></i> &nbsp; 
+                              Actualizar Preguntas de Seguridad
+                            </h5>
                               
                             <div class="col-12 mb-2 text-center">
                                 <button modal="preguntasSeguridad" class="btn_modal btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">
@@ -122,16 +128,12 @@ $VISTA_PRIMER_INICIO = $_SESSION['primer_inicio'] == '0' ? '' : 'toggle-sidebar'
                                 </button>
                             </div>
                         </div>
-
                       </fieldset>
 
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
           </div>
-        </div>
       </section>
     </main>
 

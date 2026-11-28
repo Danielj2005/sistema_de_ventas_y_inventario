@@ -28,7 +28,7 @@ if ($g_venta) {  ?>
         include_once "../include/css_include.php";
       ?>
     </head>
-    <body>
+  <body class="dark:bg-gray-900 bg-gray-400/20 ">
       <?php 
         // se incluye el header / encabezado a la vista
         include_once "../include/header.php";
@@ -41,7 +41,7 @@ if ($g_venta) {  ?>
             <i class="bi bi-chevron-left"></i> 
             <span>Volver al Panel Principal</span>
           </a>
-          <h1 class="h3 fw-bold mb-0">
+          <h1 class="h3 fw-bold mb-0 dark:text-slate-100">
             Generar Venta
           </h1>
         </div>
@@ -49,7 +49,7 @@ if ($g_venta) {  ?>
         <section class="section dashboard">
           <div class="row">
             <div class="col-12">
-              <div class="card">
+              <div class="card bg-[#fff] dark:bg-slate-800 rounded-2xl shadow-xl shadow-black/5             ">
                 <div class="card-body">
                   <form id="formulario" action="../controlador/generar_venta_controlador.php" method="post" class="SendFormAjax p-3" autocomplete="off" data-type-form="save">
                     <input type="hidden" name="dolar" id="precioDolar" value="<?= $precio_dolar_actual; ?>">
@@ -58,12 +58,12 @@ if ($g_venta) {  ?>
                     <!-- datos del cliente -->
 
                     <fieldset class="row">
-                      <h5 class="card-title col-12 mb-3" >Datos del Cliente</h5>
+                      <h5 class="card-title col-12 mb-3 dark:text-slate-300" >Datos del Cliente</h5>
                       <div class="row mb-3" id="datos_cliente">
 
                         <div class="col-12 col-md-6 mb-2">
 
-                          <label class="form-label">Cédula <span style="color:#f00;">*</span> </label>
+                          <label class="form-label dark:text-slate-300">Cédula <span style="color:#f00;">*</span> </label>
 
                           <div class="input-group mb-2">
                             <input type="hidden" name="id_cliente" id="id_cliente">
@@ -80,13 +80,13 @@ if ($g_venta) {  ?>
                         </div>
 
                         <div class="col-12 col-md-6 mb-2">
-                          <label class="form-label">Nombre y Apellido <span style="color:#f00;">*</span></label>
+                          <label class="form-label dark:text-slate-300">Nombre y Apellido <span style="color:#f00;">*</span></label>
                           <input type="text" pattern="[A-Za-zñÑÁÉÍÚÓáéíóú ]{4,255}" required="" placeholder="Ingresa el nombre y apellido" class="form-control mb-2" id="nombre" name="nombre">
                           <p class="d-none w-auto alert alert-danger" id="mensaje_nombre"> El nombre y apellido solo puede contener caracteres alfabeticos con una longitud máxima de 255 caracteres</p>
                         </div>
 
                         <div class="col-12 col-md-12 mb-2">
-                          <label class="form-label">Teléfono <span style="color:#f00;">*</span></label>
+                          <label class="form-label dark:text-slate-300">Teléfono <span style="color:#f00;">*</span></label>
                           <input type="text" maxlength="11" pattern="[0-9]{11}" required="" placeholder="Ingrese el teléfono" class="form-control mb-2" id="telefono" name="telefono">
                           <p class="d-none w-auto alert alert-danger" id="mensaje_telefono"> El número de teléfono debe ser de 11 dígitos</p>
                         </div>
@@ -97,7 +97,7 @@ if ($g_venta) {  ?>
                     <!-- Servicios disponibles -->
 
                     <fieldset class="row mb-1"> 
-                      <h5 class="card-title">Servicios disponibles</h5>
+                      <h5 class=" dark:text-slate-300">Servicios disponibles</h5>
 
                       <div class="col-12 col-md-9 mb-4">
                         <select class="form-select select select2" name="add_servicio" id="">
@@ -111,7 +111,7 @@ if ($g_venta) {  ?>
                       </div>
 
                       <div class="col-12 mb-3 p-0">
-                        <h5 class="mb-2">Lista de servicios seleccionados</h5>
+                        <h5 class="mb-2 dark:text-slate-300">Lista de servicios seleccionados</h5>
                         
                         <div class="table-responsive">
                           <table class="table-hover table table-borderless table-striped" id="">
@@ -132,7 +132,7 @@ if ($g_venta) {  ?>
                     <!-- productos disponibles -->
 
                     <fieldset class="row"> 
-                      <h5 class="card-title col-12">Productos disponibles &nbsp; </h5>
+                      <h5 class=" dark:text-slate-300 col-12">Productos disponibles &nbsp; </h5>
 
                       <div class="col-12 col-md-9 mb-4">
                         <select name="producto" id="producto_id" class="form-select select">
@@ -146,7 +146,7 @@ if ($g_venta) {  ?>
                       </div>
 
                       <div class="col-12 mb-2 p-0">
-                        <h5 class="">Lista de productos seleccionados</h5>
+                        <h5 class=" dark:text-slate-300">Lista de productos seleccionados</h5>
                         <div class="table-responsive mb-3"> 
                           <table class="table table-striped table-borderless">
                             <thead>
@@ -167,7 +167,7 @@ if ($g_venta) {  ?>
 
                     <fieldset class="row align-items-center">
 
-                      <legend class="col-12 col-md-8 mb-3 card-title">Método de Pago</legend>
+                      <legend class="col-12 col-md-8 mb-3  dark:text-slate-300">Método de Pago</legend>
                       <div class="col-12 col-md-4 mb-3 justify-content-center d-flex">
                         <button type="button" class="btn btn-primary bi bi-plus-lg" onclick="añadir_metodo_pago()"> Añadir método</button>
                       </div>

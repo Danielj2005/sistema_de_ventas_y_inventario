@@ -1,8 +1,8 @@
 <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div id="modal_tamano" class="modal-dialog modal-dialog-scrollable">
-        <div class="modal-content">
+        <div class="modal-content dark:bg-slate-800 ">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <h5 class="modal-title  dark:text-slate-300" id="exampleModalLabel"></h5>
                 <button id="btnCloseModal" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             

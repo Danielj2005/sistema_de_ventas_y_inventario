@@ -30,7 +30,7 @@ if ($permiso_venta) { ?>
         include_once "../include/css_include.php"; 
       ?>
     </head>
-    <body>
+    <body class="dark:bg-gray-900 bg-gray-400/20 ">
 
       <?php 
 
@@ -57,15 +57,15 @@ if ($permiso_venta) { ?>
               <i class="bi bi-chevron-left"></i> 
               <span>Volver al Panel Principal</span>
           </a>
-          <h1> Ventas </h1>
+          <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-300"> Ventas </h1>
         </div> 
         <section class="section dashboard">
           <div class="row">
 
             <div class="col-lg-12">
-              <div class="card">
+              <div class="card bg-[#fff] dark:bg-slate-800 ">
                 <div class="card-body">
-                  <h5 class="card-title">Total Generado</h5>
+                  <h5 class="py-4 text-lg font-bold text-gray-800 dark:text-gray-300 ">Total Generado</h5>
                   <div class="row">
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 mb-3">
                       <div class="input-group mb-3">
@@ -88,15 +88,15 @@ if ($permiso_venta) { ?>
             </div>
             
             <div class="col-lg-12">
-              <div class="card top-selling overflow-auto">
+              <div class="bg-[#fff] dark:bg-slate-800 card top-selling overflow-auto">
                 <div class="card-body pb-0">
-                  <h5 class="card-title">Listado de Ventas</h5>
+                  <h5 class="text-lg py-4 font-bold text-gray-800 dark:text-gray-300">Listado de Ventas</h5>
                   <!-- este input se usa para la validacion de las fechas Nota: no borrar por favor! -->
                   <input type="hidden" id="fecha_actual" name="fecha_actual" value="<?= $fecha_actual; ?>">
                   <form method="post" class="row mb-3" id="rango_fechas">
                     
                     <div class="col-12 col-sm-12 col-md-12 mb-3">
-                      <p class="alert alert-info bi bi-exclamation-circle" style="width: fit-content;">
+                      <p class="px-3 bg-cyan-500 rounded-full text-md bi bi-exclamation-circle" style="width: fit-content;">
                         &nbsp; Seleciona un rango de fechas para ver las ventas realizadas en esas fechas
                       </p>
                     </div>
@@ -129,15 +129,16 @@ if ($permiso_venta) { ?>
                   </form>
 
                   <div class="p-3 table-responsive">
-                    <table class="table table-striped example" id="example">
+                    <table class=" bg-[#fff] table  example" id="example">
                       <thead>
                         <tr>
                             <th class="col text-center" scope="col" style="width: 5%;">N.°</th>
-                            <th class="col text-center" scope="col">N.° de Factura</th>
+                            <th class="col text-center" scope="col">N.° de Ticket</th>
                             
-                            <th class="col text-center" scope="col">Cliente / RIF Cliente</th>
+                            <th class="col text-center" scope="col">Cliente</th>
                             
-                            <th class="col text-center" scope="col" style="width: 10%;">Total</th>
+                            <th class="col text-center" scope="col">Total</th>
+                            <th class="col text-center" scope="col">Tasa</th>
                             
                             <th class="col text-center" scope="col">Fecha y Hora</th>
                             

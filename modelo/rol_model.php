@@ -114,7 +114,7 @@ class rol_model extends model_user {
 
     public static function obtener_id_rol_usuario(){
 
-        $id_usuario = $_SESSION["id_usuario"]; // se recibe el id del usuario que inició sesión
+        $id_usuario = $_SESSION['dataUsuario']["id_usuario"]; // se recibe el id del usuario que inició sesión
         $id_rol = modeloPrincipal::consultar("SELECT id_rol FROM usuario WHERE id_usuario = $id_usuario");
 
         if (!$id_rol) {

@@ -30,7 +30,7 @@ if ($permiso_servicios) { ?>
 				include_once "../include/css_include.php"; 
 			?>
 		</head>
-		<body>	
+	<body class="dark:bg-gray-900 bg-gray-400/20 ">
 			<?php 
 				// se incluye el header / encabezado a la vista
 				include_once "../include/header.php";
@@ -45,20 +45,24 @@ if ($permiso_servicios) { ?>
 						<span>Volver al Panel Principal</span>
 					</a>
 
-					<h1 class="titulosH my-2">Gestión de Servicios</h1> 
+					<h1 class="titulosH my-2 dark:text-slate-100">Gestión de Servicios</h1> 
 				</div>
 
 				<section class="section dashboard">
 					<div class="row">
 						<div class="col-12">
-							<div class="card top-selling">
+							<div class=" bg-[#fff] dark:bg-slate-800 rounded-2xl shadow-xl shadow-black/8 ">
 
 								<?php if ($r_servicio == 1 && $l_servicio == 1) : ?>
 
-									<div class="row p-2 text-center">
-										<div class="col-12 col-sm-12 col-md-12 ">
-											<button id="btn_register" type="button" onclick="toggle()" class="w-100 shadow-sm btn btn-success"><i class="bi bi-plus-circle"></i> Registrar Nuevo Servicio</button>
-										</div>
+									<div class="flex items-center w-100 p-2 text-center">
+										<button id="btn_register" type="button" 
+											class="rounded-2xl shadow-sm btn btn-success btn_modal"
+											data-bs-toggle="modal" 
+											data-bs-target="#modal" 
+											modal="servicioRegistrar" >
+												<i class="bi bi-plus"></i> Añadir Servicio
+										</button>
 									</div>
 									<hr>
 
@@ -68,9 +72,9 @@ if ($permiso_servicios) { ?>
 
 									<?php if ($l_servicio == 1) : ?>
 
-										<div class="hidden">
-											<h5 class="card-title">Lista de servicios</h5>
-											<table class="table table-striped table-responsive datatable" id="example">
+										<div class="">
+											<h5 class="card-title dark:text-slate-500 dark:border-b-slate-300">Lista de servicios</h5>
+											<table  data-bs-theme="dark" class="dark:bg-[#fff] table table-responsive datatable" id="example">
 												<thead>
 													<tr>
 														<th class="col text-center"scope="col">#</th>
@@ -91,7 +95,7 @@ if ($permiso_servicios) { ?>
 
 									<?php endif; if ($r_servicio == 1) : ?>
 
-										<div class="hidden <?= $l_servicio == 1 ? 'd-none' : ''; ?>">
+										<div class=" <?= $l_servicio == 1 ? 'hidden' : ''; ?>">
 
 											<form method="post" action="../controlador/servicio_controlador.php" class="SendFormAjax" autocomplete="off" data-type-form="save">
 												
@@ -239,28 +243,7 @@ if ($permiso_servicios) { ?>
 					// tasa = parseFloat(tasa);
 					input_bs.value = (input_dolar.value * tasa).toFixed(2);
 				});
-				
-				// funcion para mostrar y ocultar elementos en proveedores
-				
-				const btnToggle = document.getElementById('btn_register');
-				
-				const toggle = ()=>{
-					
-					const titleBtn = [
-						'<i class="bi bi-plus-circle"></i> Registrar Nuevo Servicio',
-						`<i class="bi bi-list-columns-reverse"></i> Ver Lista de Servicios Registrados`
-					];
 
-					btnToggle.classList.toggle('btn-secondary');
-					btnToggle.classList.toggle('btn-success');
-					
-					btnToggle.innerHTML = btnToggle.innerHTML == titleBtn[0] ? titleBtn[1] : titleBtn[0];
-
-					const hiddenElements = document.querySelectorAll('.hidden');
-					hiddenElements.forEach(element => {
-						element.classList.toggle('d-none');
-					});
-				};
 
 			</script>
 

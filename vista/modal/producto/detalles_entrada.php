@@ -26,8 +26,8 @@ $detalles_entrada = modeloPrincipal::consultar("SELECT PS.cantidad AS presentaci
 ?>
 
 <div class="table-responsive">
-    <table class="table table-borderless table-striped tableDetailsEntry" id="example">
-        <thead>
+    <table class="table tableDetailsEntry" id="example">
+        <thead class=" dark:bg-[#fff] ">
             <tr>
                 <th class="col text-center" scope="col">N.º</th>
                 <th class="col text-center" scope="col">Producto</th>
@@ -36,13 +36,13 @@ $detalles_entrada = modeloPrincipal::consultar("SELECT PS.cantidad AS presentaci
                 <th class="col text-center" scope="col">Registrado por</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class=" dark:bg-[#fff] ">
             <?php
 
             $i = 1;
             // se guardan los datos en un array y se imprime
             while ( $mostrar = mysqli_fetch_array($detalles_entrada)) { ?>    
-                <tr>
+                <tr class="hover:bg-slate-300 border-b-slate-600">
                     <td class="col text-center"></td>
                     <td class="text-start">
                         <p class="fw-bold mb-1"> Código: <?= $mostrar["codigo"] ?> </p>
@@ -51,12 +51,14 @@ $detalles_entrada = modeloPrincipal::consultar("SELECT PS.cantidad AS presentaci
                         </p>
                         <small class="d-block text-muted"> <span class="fw-bold">Categoria:</span> <?= $mostrar["categoria"] ?> </small>
                     </td>
-                    <td class="col text-center"><?= $mostrar["cantidad_comprada"]; ?></td>
+                    <td class="col text-center">
+                        <p class=""><span class="rounded-2xl badge text-bg-success px-3 fs-6"><?= $mostrar["cantidad_comprada"]; ?></p>
+                    </td>
                     <td class="col text-center">
                         
-                        <div class="text-center">
-                            <p class="col-12"><span class="badge text-bg-secondary fs-6"> <?= modeloPrincipal::number_format_prices($mostrar["precio_dolar"]); ?> $ </span></p>
-                            <p class="col-12"><span class="badge text-bg-secondary fs-6"> <?= modeloPrincipal::number_format_prices($mostrar["precio_bs"]); ?> Bs</span> </p>
+                        <div class="text-center flex flex-col gap-2">
+                            <p class=""><span class="rounded-2xl badge text-bg-primary px-3 fs-6"> <?= modeloPrincipal::number_format_prices($mostrar["precio_dolar"]); ?> $ </span></p>
+                            <p class=""><span class="rounded-2xl badge text-bg-secondary px-3 fs-6"> <?= modeloPrincipal::number_format_prices($mostrar["precio_bs"]); ?> Bs</span> </p>
                         </div>
                         
                     </td>

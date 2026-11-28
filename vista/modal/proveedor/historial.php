@@ -30,53 +30,54 @@ if (mysqli_num_rows($consulta) < 1) {
 }
 ?>
 
-<legend class="mb-3 text-center"> Nombre del proveedor :  <b>"<?= $nombre_proveedor ?>"</b> </legend>
+<legend class="mb-3 text-center dark:text-slate-300 font-bold">"<?= $nombre_proveedor ?>" </legend>
 <div class="table-responsive">
-    <table class="table table-striped table-borderless tableProvider pt-2">
-        <thead>
+    <table class="table tableProvider pt-2">
+        <thead class=" dark:bg-[#fff]">
             <tr>
                 <th class="col text-center" scope="col">#</th>
-                <th class="col text-center" scope="col">Fecha</th>
-                <th class="col text-center" scope="col">Hora</th>
+                <th class="col text-center" scope="col">Úlima Compra</th>
                 <th class="col text-center" scope="col">Total</th>
                 <th class="col text-center" scope="col">Tasa de Cambio</th>
                 <th class="col text-center" scope="col">Registrado por</th>
             </tr>
         </thead>
-        <tbody>
+                        <tbody class=" dark:bg-[#fff] "> 
             <?php 
                 while ($row = mysqli_fetch_array($consulta)) { ?>    
-                    <tr>
-                        <td class="col text-center"></td>
-                        <td class="text-center col">
-                            <small class="d-block text-muted">
-                                <?= date("d-m-Y", strtotime($row["fecha_entrada"])); ?>
+            <tr class="hover:bg-slate-300 border-b-slate-600">
+                        <td class="col text-center border-b border-slate-600 "></td>
+                        <td class="text-center col border-b border-slate-600 ">
+                            <small class="d-block text-slate-800 dark:text-slate-800">
+                                <span class="fw-bold">Fecha:</span> <?= date("d-m-Y", strtotime($row["fecha_entrada"])); ?>
                             </small>
-                        </td> 
-                        <td class="text-center col">
-                            <small class="d-block text-muted">
-                                <?= date("h:i:a", strtotime($row["fecha_entrada"])); ?>
+                            <small class="d-block text-slate-800 dark:text-slate-800">
+                                <span class="fw-bold">Hora:</span> <?= date("h:i:a", strtotime($row["fecha_entrada"])); ?>
                             </small>
-                        </td> 
 
-                        <td class="col text-center">
+                        </td> 
+                        <td class="col text-center border-b border-slate-600 ">
                             
-                            <div class="text-center justify-content-center">
+                            <div class="text-center justify-center flex flex-wrap gap-2">
                                 <p class="col-12">
-                                    <span class="badge text-bg-secondary fs-6">
+                                    <span class="badge text-bg-primary fs-6 rounded-2xl">
                                         <?= modeloPrincipal::number_format_prices($row["total_dolar"]); ?> $
                                     </span>
                                 </p>
                                 <p class="col-12">
-                                    <span class="badge text-bg-secondary fs-6">
+                                    <span class="badge text-bg-secondary fs-6 rounded-2xl">
                                         <?= modeloPrincipal::number_format_prices($row["total_bs"]); ?> Bs
                                     </span>
                                 </p>
                             </div>
                             
                         </td>
-                        <td class="col text-center"><?= modeloPrincipal::number_format_prices($row["tasa"]).' bs'; ?></td>
-                        <td class="col text-center"><?= $row["dni"]; ?></td>
+                        <td class="col text-center border-b border-slate-600 ">                            
+                            <span class="badge text-bg-success fs-6 rounded-2xl">
+                                <?= modeloPrincipal::number_format_prices($row["tasa"]).' bs'; ?>
+                            </span>
+                        </td>
+                        <td class="col text-center border-b border-slate-600 "><?= $row["dni"]; ?></td>
                     </tr>
             <?php } ?>
         </tbody>

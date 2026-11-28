@@ -54,63 +54,73 @@ $cant_servicios = empty($cantidades['cantidad_servicio']) ? 0 : $cantidades['can
 
 ?>
 
-
-<div class="d-flex justify-content-center m-0 p-0 mb-3">
-    <img src="./img/logo.png" alt="Logo La Chinita" style="max-width: 60px; height: auto;">
-</div>
-<h6 class="text-center fw-bold">BAR RESTAURANT Y LUNCHERIA 'LA CHINITA'</h6>
-<p class="text-center m-0 small">RIF: V-04608675-5</p>
-<p class="text-center m-0 small">Calle 2 entre Av 5 y 6 - Villa Bruzual Portuguesa</p>
-
-<hr class="dotted-separator">
-
 <div class="d-flex justify-content-between small">
-    <span class="fw-bold">CLIENTE</span>
-    <span>TOTAL ART.: <?= $cant_productos + $cant_servicios ?></span>
+    <span class="fw-bold dark:text-slate-300">CLIENTE</span>
+    <span class=" dark:text-slate-300">TOTAL ART.: <?= $cant_productos + $cant_servicios ?></span>
 </div>
 <ul class="list-unstyled small m-0">
-    <li><span class="fw-bold">RIF/C.I.:</span> <?= $datos_venta['cedula']; ?></li>
-    <li><span class="fw-bold">Razón Social:</span> <?= $datos_venta['nombre']; ?></li>
+    <li><span class="fw-bold dark:text-slate-300">RIF/C.I.:</span> 
+
+        <span class=" dark:text-slate-500">  <?= $datos_venta['cedula']; ?>
+        </span></li>
+    <li><span class="fw-bold dark:text-slate-300">Razón Social:</span> 
+        
+        <span class=" dark:text-slate-500">  <?= $datos_venta['nombre']; ?>
+        </span></li>
 </ul>   
 
 <div class="d-flex justify-content-between small mt-2">
-    <span class="fw-bold">EMPLEADO</span>
-    <span>Nº FACTURA: <?= venta_model::generar_numero($datos_venta['id_venta']); ?></span>
+    <span class="fw-bold dark:text-slate-300">EMPLEADO</span>
+    <span class=" dark:text-slate-300">Nº FACTURA: 
+        <span class=" dark:text-slate-500">  <?= venta_model::generar_numero($datos_venta['id_venta']); ?>
+            
+        </span>
+    </span> 
 </div>
 <ul class="list-unstyled small m-0">
-    <li><span class="fw-bold">Vendedor:</span> <?= $datos_venta['empleado_nombre'].' '.$datos_venta['empleado_apellido']; ?></li>
-    <li><span class="fw-bold">Fecha/Hora:</span> <?= date ("d-m-Y g:i:a", strtotime($datos_venta['fecha_venta'])); ?></li>
+    <li>
+        <span class="fw-bold dark:text-slate-300">Vendedor:</span> 
+        <span class=" dark:text-slate-500">  <?= $datos_venta['empleado_nombre'].' '.$datos_venta['empleado_apellido']; ?> 
+        </span>
+    </li>
+    <li>
+        <span class="fw-bold dark:text-slate-300">Fecha/Hora:</span> 
+       
+        <span class=" dark:text-slate-500"> 
+         <?= date ("d-m-Y g:i:a", strtotime($datos_venta['fecha_venta'])); ?>
+        </span>
+    </li>
 </ul>
 
 <hr class="dotted-separator">
 
 <div class="d-flex small fw-bold">
-    <span style="width: 50%;">DESCRIPCIÓN</span>
-    <span class="text-center" style="width: 20%;">CANT</span>
-    <span class="text-end" style="width: 30%;">PRECIO (Bs)</span>
+    <span class=" dark:text-slate-300" style="width: 50%;">DESCRIPCIÓN</span>
+    <span class="text-center dark:text-slate-300" style="width: 20%;">CANT</span>
+    <span class="text-end dark:text-slate-300" style="width: 30%;">PRECIO (Bs)</span>
 </div>
 
 <?php while($row = mysqli_fetch_array($detalles_venta_productos)){ ?>
     <div class="d-flex justify-content-between small">
-        <span style="width: 50%;"><?= $row['producto'].' '.$row['marca'].' '.$row['presentacion'].' '.$row['representacion'] ?></span>
-        <span class="text-center" style="width: 20%;"><?= $row['cantidad']; ?></span>
-        <span class="text-end" style="width: 30%;"><?= modeloPrincipal::number_format_prices($row['precio']); ?></span>
+        <span class=" dark:text-slate-500" style="width: 50%;"><?= $row['producto'].' '.$row['marca'].' '.$row['presentacion'].' '.$row['representacion'] ?></span>
+        <span class="text-center dark:text-slate-500" style="width: 20%;"><?= $row['cantidad']; ?></span>
+        <span class="text-end dark:text-slate-500" style="width: 30%;"><?= modeloPrincipal::number_format_prices($row['precio']); ?></span>
     </div>
 <?php } ?>
 
 <?php while($row = mysqli_fetch_array($detalles_venta)){ ?>
     <div class="d-flex justify-content-between small">
-        <span style="width: 50%;"><?= $row['nombre_platillo']?></span>
-        <span class="text-center" style="width: 20%;"><?= $row['cantidad_servicio']; ?></span>
-        <span class="text-end" style="width: 30%;"><?= modeloPrincipal::number_format_prices($row['precio']); ?></span>
+        <span class=" dark:text-slate-500" style="width: 50%;"><?= $row['nombre_platillo']?></span>
+        <span class="text-center dark:text-slate-500" style="width: 20%;"><?= $row['cantidad_servicio']; ?></span>
+        <span class="text-end dark:text-slate-500" style="width: 30%;"><?= modeloPrincipal::number_format_prices($row['precio']); ?></span>
     </div>
 <?php } ?>
 
 <hr class="dotted-separator">
 
 <div class="d-flex justify-content-between fs-5 fw-bold">
-    <span>TOTAL A PAGAR</span>
-    <span>Bs <?= modeloPrincipal::number_format_prices($datos_venta['monto_total_bolivares']); ?></span>
+    <span class=" dark:text-slate-300">TOTAL A PAGAR</span>
+    <span class=" dark:text-slate-300">Bs <?= modeloPrincipal::number_format_prices($datos_venta['monto_total_bolivares']); ?></span>
 </div>
 
 <hr class="dotted-separator">

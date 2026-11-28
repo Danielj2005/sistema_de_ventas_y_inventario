@@ -23,14 +23,14 @@ $datosServicio = mysqli_fetch_array(modeloPrincipal::consultar("SELECT * FROM me
 
 <div class="mb-3 ms-0 mt-0 me-0 row">
     <div class="col-md-6 col-12 mb-3">
-        <label class="form-label">Descripción</label>
+        <label class="form-label dark:text-slate-500 ">Descripción</label>
         <div class="col-md-4 input-group">
             <input type="text" disabled class="form-control" value="<?= $datosServicio['descripcion']; ?>" placeholder="Descripción del servicio" name="descripcion" id="descripcion">
         </div>
     </div>
 
     <div class="col-md-6 col-12 mb-3">
-        <label class="form-label">Precio de venta en $</label>
+        <label class="form-label dark:text-slate-500 ">Precio de venta en $</label>
         <div class="col-md-4 input-group">
             <input type="text" disabled class="form-control" value="<?= modeloPrincipal::number_format_prices($datosServicio['precio_dolar']); ?> $" placeholder="Precio de venta en $ del servicio" name="precio_dolar" id="precio_dolar" required>
         </div>
@@ -38,8 +38,8 @@ $datosServicio = mysqli_fetch_array(modeloPrincipal::consultar("SELECT * FROM me
 
 </div>
 <div class="table-responsive">
-    <h3>Productos del servicio</h3>
-    <table class="table table-striped tableDetailsService">
+    <h3 class=" dark:text-slate-500 mb-4">Productos del servicio</h3>
+    <table class="dark:bg-[#fff] table table-striped tableDetailsService">
         <thead>
             <tr>
                 <th class="col text-center" scope="col">Nº</th>
@@ -54,7 +54,8 @@ $datosServicio = mysqli_fetch_array(modeloPrincipal::consultar("SELECT * FROM me
                 }
                 // se guardan los datos en un array y se imprime
                 while ( $mostrar = mysqli_fetch_array($detalles_menu)) { ?>    
-                    <tr>
+                    
+            <tr class="hover:bg-slate-300 border-b-slate-600">   
                         <td class="text-center"></td>
 
                         <td class="col text-center" scope="col">

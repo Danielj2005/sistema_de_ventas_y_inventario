@@ -172,8 +172,7 @@ model_user::modificar_sesion_ultima_sesion_fecha(
     $fecha_ultima_sesion, 
     '1'); // se actualiza la fecha de la ultima sesion
 
-    
-if ($datos_usuario["primer_inicio"] == 1) {
+if ($datos_usuario['dataUsuario']["primer_inicio"] == 1) {
 
     alert_model::alert_redirect(
         '¡Bienvenido!',

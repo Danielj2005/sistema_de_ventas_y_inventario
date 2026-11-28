@@ -7,7 +7,7 @@ require_once "../../../modelo/rol_model.php";
 
 ?>
 <div class="table table-responsive">
-    <table class="table table-striped tablePresentationOfProducts mb-3" id="tablePresentationOfProducts">
+    <table class="table dark:bg-[#fff] tablePresentationOfProducts mb-3" id="tablePresentationOfProducts">
         <thead>
             <tr>
                 <th class="col text-center" scope="col">#</th>

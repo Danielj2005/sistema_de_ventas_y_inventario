@@ -12,7 +12,7 @@ const DB = "ventoi"; // Nombre de la base de datos
 const SECRET_KEY = 'SPLCH2024';
 const ICONO_MODIFICAR = "bi bi-pencil-square";
 
-const PERMISOS_MODULOS = [
+/* const PERMISOS_MODULOS = [
     'Inventario' => [
         'productos' => ['r_equipo', 'm_equipo', 'l_equipo'],
         'r_proveedores
@@ -91,7 +91,7 @@ l_entrada'
         'Bitácora' => ['v_bitacora']
     ]
 ];
-
+*/
 const NOMBRES_LEGIBLES = [
     'r_marca' => 'Registrar Nueva Marca',
     'm_marca' => 'Modificar Marca Existente',
